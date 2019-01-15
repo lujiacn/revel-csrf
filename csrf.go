@@ -35,7 +35,7 @@ var CSRFFilter = func(c *revel.Controller, fc []revel.Filter) {
 	if !found {
 		realToken = generateNewToken(c)
 	} else {
-		realToken = tokenCookie
+		realToken = tokenCookie.(string)
 		revel.AppLog.Infof("REVEL-CSRF: Session's token: '%s'", realToken)
 		if len(realToken) != lengthCSRFToken {
 			// Wrong length; token has either been tampered with, we're migrating
