@@ -81,7 +81,7 @@ var CSRFFilter = func(c *revel.Controller, fc []revel.Filter) {
 			// Get CSRF token from form.
 			sentToken = c.Params.Get(fieldName)
 		}
-		revel.TRACE.Printf("REVEL-CSRF: Token received from client: '%s'", sentToken)
+		revel.AppLog.Infof("REVEL-CSRF: Token received from client: '%s'", sentToken)
 
 		if len(sentToken) != len(realToken) {
 			c.Result = c.Forbidden(errBadToken)
